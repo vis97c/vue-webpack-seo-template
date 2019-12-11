@@ -5,7 +5,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-// const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 require('es6-promise').polyfill();
 
 const mode = process.env.NODE_ENV || 'development';
@@ -18,14 +17,12 @@ var config = {
     },
     resolve: {
         alias: {
-            // svelte: path.resolve('node_modules', 'svelte'),
             '_src': path.resolve(__dirname, 'src'),
             '_components': path.resolve(__dirname, 'src/js/components'),
             '_helpers': path.resolve(__dirname, 'src/js/helpers'),
             '_assets': path.resolve(__dirname, 'src/assets'),
         },
         extensions: ['.js', '.vue'],
-        // mainFields: ['svelte', 'browser', 'module', 'main']
     },
     output: {
         path: __dirname + '/public_html',
@@ -34,9 +31,6 @@ var config = {
         publicPath: '/',
     },
     plugins: [
-        // new DefinePlugin({
-        //     'process.env': JSON.stringify(Dotenv.config().parsed)
-        // }),
         new VueLoaderPlugin(),
     ],
     module: {
@@ -52,14 +46,12 @@ var config = {
                 test: /\.vue$/,
                 exclude: /node_modules/,
                 use: [
-                    // 'babel-loader',
                     {
                         loader: 'vue-loader',
                         options: {
-                            // emitCss: true,
                             hotReload: true,
                         }
-                    }
+                    },
                 ]
             },
             {
@@ -133,16 +125,14 @@ if (isProduction) {
     const PATHS = {
         src: path.join(__dirname, 'src')
     }
-    // const PurgeCss = require('@fullhuman/postcss-purgecss');
-    // const CssNano = require('cssnano');
     config.plugins.push(
         new MiniCssExtractPlugin({
             filename: 'css/[name].css',
         }),
-        new CopyPlugin([
-            { from: 'src/to_public/default', to: '', dot: true },
-            { from: 'src/to_public/production', to: '', dot: true },
-        ]),
+        new PurgecssPlugin({
+            paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
+            whitelistPatterns: [/swal/, /vue-/]
+        }),
         new HtmlWebpackPlugin({
             filename: 'index.template',
             template: 'src/index.template.html',
@@ -163,19 +153,16 @@ if (isProduction) {
                     indent_with_tabs: true,
                     indent_inner_html: true,
                     preserve_newlines: false,
-                    // js: {},
-                    // css: {}
                 }
             }
         }),
-        new PurgecssPlugin({
-            paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
-            whitelistPatterns: [/swal/, /vue-/]
-        })
+        new CopyPlugin([
+            { from: 'src/to_public/default', to: '', dot: true },
+            { from: 'src/to_public/production', to: '', dot: true },
+        ]),
     );
     module.exports = Object.assign({}, config, {
         optimization: {
-            // runtimeChunk: 'single',
         	splitChunks: {
         		chunks: 'all',
             },
@@ -184,9 +171,7 @@ if (isProduction) {
                 new TerserPlugin({
                     cache: true,
                     parallel: true,
-                    // sourceMap: true, // Must be set to true if using source-maps in production
                     terserOptions: {
-                        // https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
                         output: {
                             comments: false,
                         },
@@ -205,22 +190,6 @@ if (isProduction) {
                         ]
                     },
                 })
-                // new PurgeCss({
-                //     content: [
-                //         './src/**/*.html',
-                //         './src/**/*.vue'
-                //     ],
-                //     whitelistPatterns: [/swal/]
-                // }),
-                // new CssNano({
-                //     'preset': [
-                //         'default', {
-                //             'discardComments': {
-                //                 'removeAll': true
-                //             }
-                //         }
-                //     ]
-                // })
             ],
         },
     });
@@ -229,21 +198,20 @@ if (isProduction) {
     const WebpackNotifierPlugin = require('webpack-notifier');
     let proxy_url = process.env.PROXY_URL;
     config.plugins.push(
-        new WebpackNotifierPlugin({
-            title: 'Webpack Build',
-            contentImage: path.join(__dirname, 'src/assets/logo.png'),
-            alwaysNotify: true,
-        }),
-        new CopyPlugin([
-            { from: 'src/to_public/default', to: '', dot: true },
-            { from: 'src/to_public/dev', to: '', dot: true },
-        ]),
         new HtmlWebpackPlugin({
             filename: 'index.template',
             template: 'src/index.template.html',
             hash: true,
         }),
-        // new FriendlyErrorsPlugin(),
+        new CopyPlugin([
+            { from: 'src/to_public/default', to: '', dot: true },
+            { from: 'src/to_public/dev', to: '', dot: true },
+        ]),
+        new WebpackNotifierPlugin({
+            title: 'Webpack Build',
+            contentImage: path.join(__dirname, 'src/assets/logo.png'),
+            alwaysNotify: true,
+        }),
     );
     module.exports = Object.assign({}, config, {
         devServer: {

@@ -10,14 +10,14 @@
             "name": "Landing",
             "route": "/",
             "meta": {
-                "title": "SITENAME | PAGE_TITLE"
+                "title": "SITENAME | Home"
             }
         },
         {
-            "name": "About",
-            "route": "/about",
+            "name": "GetStarted",
+            "route": "/get_started",
             "meta": {
-                "title": "SITENAME | SECOND_PAGE"
+                "title": "SITENAME | Get Started"
             }
         },
         {

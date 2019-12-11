@@ -1,5 +1,5 @@
 {
-	"name": "@vis97c/vue-webpack",
+	"name": "@vis97c/vue-webpack-template",
 	"version": "1.0.0",
 	"description": "Template for a vue spa usign webpack",
 	"main": "public_html/js/app.js",
