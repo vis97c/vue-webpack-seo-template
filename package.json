@@ -7,7 +7,8 @@
 	"scripts": {
 		"production": "cross-env NODE_ENV=production webpack",
 		"dev": "cross-env NODE_ENV=development webpack",
-		"watch": "webpack-dev-server"
+		"watch": "webpack-dev-server",
+		"g_icons": "vsvg -s ./svg-icons -t ./src/js/compiled-icons"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.7.4",
@@ -21,7 +22,6 @@
 		"@vue/cli-plugin-babel": "^4.1.1",
 		"@vue/cli-service": "^3.8.0",
 		"babel-loader": "^8.0.6",
-		"browser-sync-webpack-plugin": "^2.0.1",
 		"copy-webpack-plugin": "^5.0.5",
 		"cross-env": "^5.2.0",
 		"css-loader": "^2.1.1",
@@ -45,7 +45,6 @@
 	},
 	"dependencies": {
 		"@babel/polyfill": "^7.7.0",
-		"browser-sync": "^2.26.7",
 		"core-js": "^3.4.8",
 		"dotenv": "^8.2.0",
 		"es6-promise": "^4.2.8",
