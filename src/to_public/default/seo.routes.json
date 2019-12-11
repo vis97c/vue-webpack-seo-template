@@ -1,0 +1,32 @@
+{
+    "_name": "svelte-trend",
+    "_title": "SITENAME | PAGE_TITLE",
+    "_description": "SITE_DESCRIPTION",
+    "_image": "https://www.DOMAIN/images/THUMBNAIL.EXTENSION",
+    "_keywords": "SITE_TAGS",
+    "_404": "/404",
+    "pages": [
+        {
+            "name": "Landing",
+            "route": "/",
+            "meta": {
+                "title": "SITENAME | PAGE_TITLE"
+            }
+        },
+        {
+            "name": "About",
+            "route": "/about",
+            "meta": {
+                "title": "SITENAME | SECOND_PAGE"
+            }
+        },
+        {
+            "name": "NotFound",
+            "route": "/404",
+            "meta": {
+                "title": "SITENAME | 404",
+                "description": "The page you are looking for doesn't exist"
+            }
+        }
+    ]
+}
