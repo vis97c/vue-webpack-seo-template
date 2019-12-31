@@ -1,7 +1,7 @@
-# vue-webpack-template
+# vue-webpack-seo-template
 Plantilla para desarrollo web con Vue.js sobre webpack.
 
-No olvides visitar nuestro repositorio en github: [vue-webpack-template](https://github.com/vis97c/vue-webpack-template)
+No olvides visitar nuestro repositorio en github: [vue-webpack-seo-template](https://github.com/vis97c/vue-webpack-seo-template)
 
 ## Caracteristicas
 
