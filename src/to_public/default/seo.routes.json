@@ -1,9 +1,13 @@
 {
-    "_name": "svelte-trend",
+    "_name": "SITENAME",
     "_title": "SITENAME | PAGE_TITLE",
     "_description": "SITE_DESCRIPTION",
     "_image": "https://www.DOMAIN/images/THUMBNAIL.EXTENSION",
     "_keywords": "SITE_TAGS",
+	"_twitter": {
+		"_site": null,
+		"_creator": null
+	},
     "_404": "/404",
     "pages": [
         {

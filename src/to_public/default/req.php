@@ -1,4 +1,5 @@
 <?php
+/** @format */
 header('Content-Type: application/json');
 $response = [];
 foreach ($_GET as $key => $value) {
