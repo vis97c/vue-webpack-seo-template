@@ -14,7 +14,7 @@
 		<meta name="HandheldFriendly" content="true" />
 		<meta name="MobileOptimized" content="320" />
 		<!-- <meta name="mobile-web-app-capable" content="yes"> -->
-		<!-- Chrome, Edge Chromium, Firefox OS and Opera -->
+		<!-- Chrome, Firefox OS and Opera -->
 		<meta name="theme-color" content="#42b983" />
 		<!-- Windows Phone -->
 		<meta name="msapplication-navbutton-color" content="#42b983" />
@@ -23,16 +23,44 @@
 		<!-- iOS Safari -->
 		<meta name="apple-mobile-web-app-status-bar-style" content="white" />
 		<!-- <meta name="apple-mobile-web-app-capable" content="yes"> -->
-		<!-- <meta name="apple-mobile-web-app-title" content="SITENAME | PAGE_TITLE" /> -->
+		<meta
+			name="apple-mobile-web-app-title"
+			content="SITENAME | PAGE_TITLE"
+		/>
 
 		<!-- pwa loader -->
 		<!-- <script type="text/javascript" src="/js/pwa-loader.js"></script> -->
 
-		<!-- inicia DINAMYC SEO -->
-		<meta inject-meta-data />
-		<!-- termina DINAMYC SEO -->
-
+		<!-- inicia SEO -->
+		<title>NOMBRE_DEL_SITIO | PAGE_TITLE</title>
 		<link type="image/ico" rel="icon" href="/favicon.ico" />
+		<link rel="canonical" href="https://www.DOMAIN/" />
+		<meta name="description" content="DESCRIPCION" />
+		<meta name="keywords" content="TAGS" />
+		<!-- inicia TWITTER CARD -->
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content="NOMBRE_DEL_SITIO | PAGE_TITLE" />
+		<meta name="twitter:description" content="DESCRIPCION" />
+		<meta
+			name="twitter:image"
+			content="https://www.DOMAIN/images/THUMBNAIL.EXTENSION"
+		/>
+		<meta name="twitter:creator" content="@PERFIL_EMPRESA" />
+		<meta name="twitter:site" content="@PERFIL_SITIO" />
+		<!-- termina TWITTER CARD -->
+		<!-- inicia OPEN GRAPH -->
+		<meta property="og:site_name" content="NOMBRE_DEL_SITIO" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://www.DOMAIN" />
+		<meta property="og:title" content="NOMBRE_DEL_SITIO | PAGE_TITLE" />
+		<meta property="og:description" content="DESCRIPCION" />
+		<meta
+			property="og:image"
+			content="https://www.DOMAIN/images/THUMBNAIL.EXTENSION"
+		/>
+		<!-- termina OPEN GRAPH -->
+		<!-- termina SEO -->
+
 		<!-- For further reference on resource hints see https://crenshaw.dev/preconnect-resource-hint-crossorigin-attribute -->
 		<link rel="dns-prefetch" href="https://fonts.googleapis.com/" />
 		<link rel="preconnect" href="https://fonts.googleapis.com/" />
@@ -42,7 +70,7 @@
 			crossorigin
 		/>
 		<!-- Main font @GoogleFonts -->
-		<link href="DELETE_IF_YOU_DONT_USE_FONTAWESOME" rel="stylesheet" />
+		<link href="YOUR_DESIRED_FONT" rel="stylesheet" />
 
 		<!-- For further reference on resource hints see https://crenshaw.dev/preconnect-resource-hint-crossorigin-attribute -->
 		<link rel="dns-prefetch" href="https://use.fontawesome.com/" />
@@ -64,53 +92,18 @@
 		<!-- <link type="text/css" rel="stylesheet" href="/css/app.boutique.css"> -->
 
 		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141703275-2"></script>
+		<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=YOUR_ID"></script>
 	<script>
 		window.dataLayer = window.dataLayer || [];
 		function gtag() { dataLayer.push(arguments); }
 		gtag('js', new Date());
-		gtag('config', 'UA-141703275-2');
+		gtag('config', 'YOUR_ID');
 	</script> -->
 	</head>
 
 	<body>
-		<noscript>
-			<style type="text/css">
-				.noscript {
-					width: 100%;
-					height: 100%;
-					overflow: auto;
-					padding: 100px;
-					display: -webkit-box;
-					display: -ms-flexbox;
-					display: flex;
-					-webkit-box-orient: horizontal;
-					-webkit-box-direction: normal;
-					-ms-flex-flow: row nowrap;
-					flex-flow: row nowrap;
-					-webkit-box-pack: center;
-					-ms-flex-pack: center;
-					justify-content: center;
-					-webkit-box-align: center;
-					-ms-flex-align: center;
-					align-items: center;
-					-webkit-box-sizing: border-box;
-					box-sizing: border-box;
-				}
-
-				.noscript strong {
-					max-width: 80vh;
-					font-size: 18px;
-					text-align: center;
-				}
-			</style>
-			<div class="noscript">
-				<strong>
-					We are sorry, but this page requires javascript to work.
-					Please enable it or use a compatible browser.
-				</strong>
-			</div>
-		</noscript>
-		<div id="appex"></div>
+		<div id="appex">
+			Here goes you app
+		</div>
 	</body>
 </html>
