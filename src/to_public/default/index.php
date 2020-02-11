@@ -312,7 +312,7 @@ function writeMeta($appData, $meta, $htmlTemplate, $data = null)
 		<script>window.seo = ' .
 		json_encode($initialState) .
 		';</script>';
-	return str_replace('<meta inject-meta-data>', $replace, $file);
+	return str_replace('<meta inject-meta-data />', $replace, $file);
 }
 function getRouteParams($route, $meta)
 {
