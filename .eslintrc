@@ -4,7 +4,7 @@
 		"parser": "babel-eslint",
 		"sourceType": "module",
 		"allowImportExportEverywhere": false,
-		"ecmaVersion": 2015,
+		"ecmaVersion": 2018,
 		"ecmaFeatures": {
 			"globalReturn": false
 		}
@@ -41,14 +41,17 @@
 				}
 			}
 		],
-		"no-mixed-spaces-and-tabs": ["warn", "smart-tabs"]
+		"no-mixed-spaces-and-tabs": ["warn", "smart-tabs"],
+		"no-unused-vars": "warn"
 	},
-	"overrides": [
-		{
-			"files": ["*.vue"],
-			"rules": {
-				"indent": "off"
-			}
+	"overrides": [{
+		"files": ["*.vue"],
+		"rules": {
+			"indent": "off"
 		}
-	]
+	}],
+	"globals": {
+		"$": "readonly",
+		"seo": "readonly"
+	}
 }
