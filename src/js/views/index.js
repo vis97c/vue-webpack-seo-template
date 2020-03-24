@@ -1,5 +1,5 @@
 /** @format */
-/* globals seo */
+/* globals */
 import Vue from "vue";
 import VueRouter from "vue-router";
 
@@ -42,7 +42,7 @@ const views = new VueRouter({
 		},
 		{
 			path: "/404",
-			name: "404",
+			name: "NotFound",
 			component: loadView("_not_found"),
 			meta: {
 				title: "_blank | 404",

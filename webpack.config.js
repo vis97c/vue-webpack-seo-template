@@ -44,7 +44,7 @@ var config = {
 	output: {
 		path: __dirname + "/public_html",
 		filename: "js/[name].js",
-		chunkFilename: "js/lazy/[name].js",
+		chunkFilename: "js/chunks/[name].js",
 		publicPath: "/",
 	},
 	plugins: [new VueLoaderPlugin()],
@@ -52,14 +52,16 @@ var config = {
 		rules: [
 			{
 				test: /\.js$/,
-				exclude: /node_modules/,
+				// exclude: /node_modules/,
+				include: path.resolve(__dirname, "src"),
 				use: {
 					loader: "babel-loader",
 				},
 			},
 			{
 				test: /\.vue$/,
-				exclude: /node_modules/,
+				// exclude: /node_modules/,
+				include: path.resolve(__dirname, "src"),
 				use: [
 					{
 						loader: "vue-loader",
@@ -71,6 +73,8 @@ var config = {
 			},
 			{
 				test: /\.css$/i,
+				// exclude: /node_modules/,
+				include: path.resolve(__dirname, "src"),
 				use: [
 					/**
 					 * MiniCssExtractPlugin doesn't support HMR.
@@ -83,6 +87,8 @@ var config = {
 			},
 			{
 				test: /\.s[ac]ss$/i,
+				// exclude: /node_modules/,
+				include: path.resolve(__dirname, "src"),
 				use: [
 					...(isProduction
 						? [
@@ -112,33 +118,42 @@ var config = {
 			},
 			{
 				test: /\.(png|jpg|gif|svg)$/,
+				// exclude: /node_modules/,
+				include: path.resolve(__dirname, "src"),
 				use: [
 					{
 						loader: "file-loader",
 						options: {
 							name: "images/[name].[ext]",
+							esModule: false,
 						},
 					},
 				],
 			},
 			{
 				test: /\.(mov|mp4|webm)$/,
+				// exclude: /node_modules/,
+				include: path.resolve(__dirname, "src"),
 				use: [
 					{
 						loader: "file-loader",
 						options: {
 							name: "video/[name].[ext]",
+							esModule: false,
 						},
 					},
 				],
 			},
 			{
 				test: /\.(woff|woff2|eot|ttf|otf)$/,
+				// exclude: /node_modules/,
+				include: path.resolve(__dirname, "src"),
 				use: [
 					{
 						loader: "file-loader",
 						options: {
 							name: "fonts/[name].[ext]",
+							esModule: false,
 						},
 					},
 				],
@@ -153,9 +168,10 @@ if (isProduction) {
 	const TerserPlugin = require("terser-webpack-plugin"),
 		HtmlBeautifyPlugin = require("html-beautify-webpack-plugin"),
 		ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin"),
-		OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin"),
-		PurgecssPlugin = require("purgecss-webpack-plugin"),
-		glob = require("glob");
+		OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+	// PurgecssPlugin = require("purgecss-webpack-plugin"),
+	// glob = require("glob");
+	config.output.pathinfo = false;
 	config.plugins.push(
 		new MiniCssExtractPlugin({
 			filename: "css/[name].css",
@@ -341,7 +357,7 @@ if (isProduction) {
 				},
 			},
 			historyApiFallback: true,
-			open: true,
+			open: process.env.BROWSER,
 		},
 	});
 }
