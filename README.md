@@ -126,7 +126,7 @@ Los archivos que debe editar se encuentran en su mayoria en la carpeta "**src/**
 
 - Por motivos de SEO este repositorio hace uso de un fork de [spa-php-seo](https://github.com/leonardovilarinho/spa-php-seo#readme), en este se definen las rutas de la aplicacion y sus respectivos metadatos, estos son injectados en el lado del servidor al solicitar cada pagina. Soporta urls dinamicas y request de API REST, asi como datos por defecto para rutas que no requieran esta informacion.
 
-- - En la ruta "**to_public/default**" encontrara el archivo "**to_public/default**", defina sus rutas ahi.
+- - En la ruta "**to_public/default**" encontrara el archivo "**seo.routes.json**", defina sus rutas ahi.
 
 - - - Recuerde que este archivo no guarda ninguna relacion con el router-vue, pero sus rutas deben coincidir. Las rutas que no coincidad derivaran en un redireccionamiento a la ruta 404 predefinida en el mismo.
 
