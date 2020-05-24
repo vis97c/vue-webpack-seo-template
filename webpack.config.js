@@ -43,8 +43,8 @@ var config = {
 	},
 	output: {
 		path: __dirname + "/public_html",
-		filename: "js/[name].js",
-		chunkFilename: "js/chunks/[name].js",
+		filename: "js/[name].[chunkhash:8].js",
+		chunkFilename: "js/chunks/[name].[chunkhash:8].js",
 		publicPath: "/",
 	},
 	plugins: [new VueLoaderPlugin()],
@@ -65,9 +65,9 @@ var config = {
 				use: [
 					{
 						loader: "vue-loader",
-						options: {
-							hotReload: true,
-						},
+						// options: {
+						// 	hotReload: true,
+						// },
 					},
 				],
 			},
@@ -216,6 +216,10 @@ if (isProduction) {
 	module.exports = Object.assign({}, config, {
 		// stats: "errors-only",
 		optimization: {
+			runtimeChunk: {
+				name: "runtime",
+			},
+			moduleIds: "hashed",
 			splitChunks: {
 				chunks: "all",
 				cacheGroups: {
@@ -346,7 +350,7 @@ if (isProduction) {
 	module.exports = Object.assign({}, config, {
 		devServer: {
 			port: 3000,
-			hot: false,
+			// hot: false,
 			inline: true,
 			contentBase: "public_html",
 			proxy: {

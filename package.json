@@ -8,6 +8,7 @@
 		"production": "cross-env NODE_ENV=production webpack",
 		"dev": "cross-env NODE_ENV=development webpack",
 		"watch": "webpack-dev-server",
+		"hot": "webpack-dev-server --hot",
 		"g_icons": "vsvg -s ./svg-icons -t ./src/js/compiled-icons"
 	},
 	"devDependencies": {
@@ -95,6 +96,9 @@
 		],
 		"*.scss": [
 			"stylelint --syntax=scss --fix",
+			"prettier --write"
+		],
+		"*.{php}": [
 			"prettier --write"
 		]
 	}
