@@ -174,7 +174,7 @@ if (isProduction) {
 	config.output.pathinfo = false;
 	config.plugins.push(
 		new MiniCssExtractPlugin({
-			filename: "css/[name].css",
+			filename: "css/[name].[chunkhash:8].css",
 		}),
 		// new PurgecssPlugin({
 		// 	paths: glob.sync(`${path.join(__dirname, "./src")}/js/**/*`, {
@@ -185,7 +185,7 @@ if (isProduction) {
 		new HtmlWebpackPlugin({
 			filename: "index.template",
 			template: "src/index.template.html",
-			hash: true,
+			hash: false,
 			minify: {
 				removeComments: true,
 				removeEmptyElements: false,
@@ -214,7 +214,7 @@ if (isProduction) {
 		])
 	);
 	module.exports = Object.assign({}, config, {
-		// stats: "errors-only",
+		stats: "minimal",
 		optimization: {
 			runtimeChunk: {
 				name: "runtime",
@@ -235,6 +235,7 @@ if (isProduction) {
 					},
 					// Split Vue chunks
 					vue: {
+						test: /\.vue$/,
 						name: m => {
 							if (m.constructor.name !== "CssModule") {
 								if (m.context.includes("node_modules")) {
@@ -270,13 +271,12 @@ if (isProduction) {
 										return `view.${prefix +
 											moduleName}-vue`;
 									}
-									return "root";
+									return `${moduleName.toLowerCase()}`;
 								}
 								return "unknown";
 							}
 							return "styles";
 						},
-						test: /\.vue$/,
 						reuseExistingChunk: true,
 						enforce: true,
 						chunks: "all",

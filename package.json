@@ -98,7 +98,7 @@
 			"stylelint --syntax=scss --fix",
 			"prettier --write"
 		],
-		"*.{php}": [
+		"*.php": [
 			"prettier --write"
 		]
 	}
