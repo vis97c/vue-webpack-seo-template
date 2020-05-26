@@ -126,7 +126,7 @@
 	};
 </script>
 <style lang="scss">
-	// @import "~_scss/utils/module.scss";
+	// @import "~_scss/01-utils/module.scss";
 </style>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

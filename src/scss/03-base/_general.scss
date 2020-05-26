@@ -2,6 +2,12 @@
 /*
 	General styling, layout agnostig classes and rules
 */
+* {
+	&[data-text-transform="uppercase"] {
+		text-transform: uppercase;
+	}
+}
+
 html {
 	width: 100%;
 	height: 100%;
@@ -12,11 +18,11 @@ html {
 
 ::selection {
 	// background: narrojo(.75);
-	// color: #fff;
+	// color: color(blanco);
 }
 ::-moz-selection {
 	// background: narrojo(.75);
-	// color: #fff;
+	// color: color(blanco);
 }
 h1,
 h2,
@@ -24,7 +30,8 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: font(second_font);
+	font-family: font(second);
+	line-height: 1em;
 }
 i {
 	&[class*="fa-"] {
@@ -48,12 +55,12 @@ i {
 img {
 	display: block;
 	overflow: hidden;
-	color: #fff;
+	color: color(blanco);
 	&:before {
 		content: "\f7a9";
 		font-family: font(awesome);
 		font-weight: 900;
-		color: #e74c3c;
+		color: color(narrojo);
 		font-size: 72px;
 		width: 100%;
 		height: 100%;
@@ -73,12 +80,12 @@ img {
 }
 .no-results {
 	p {
-		color: rgba(#000, 0.6);
+		color: color(negro, 0.6);
 		text-align: center;
 	}
 }
 code {
-	background: #000;
+	background: color(negro);
 	padding: 0 5px;
 	word-break: break-word;
 	white-space: pre-wrap;
@@ -106,38 +113,78 @@ blockquote {
 		margin-left: 15px;
 	}
 	._line {
-		color: rgba(#000, 0.6);
+		color: color(negro, 0.6);
 	}
 }
 .icon {
-	height: auto;
+	width: auto;
 	@include flexbox(row, nowrap, center, center);
-	&[data-size~="_55"] {
-		width: 55px;
-		font-size: 55px;
+
+	$logoSizes: 100, 55, 50, 45, 40, 35, 30, 25, 20, 15;
+	@each $size in $logoSizes {
+		&[data-size="_#{$size}"] {
+			height: #{$size}px;
+			font-size: #{$size}px;
+			object-fit: contain;
+			max-width: 1.8em;
+			object-position: 50% 50%;
+		}
 	}
-	&[data-size~="_45"] {
-		width: 45px;
-		font-size: 45px;
+}
+.holder {
+	margin: 0 auto;
+	width: 100%;
+	padding: 40px;
+	@include box-sizing(border-box);
+
+	&[data-position="left"] {
+		margin-left: 0;
+		margin-right: auto;
 	}
-	&[data-size~="_35"] {
-		width: 35px;
-		font-size: 35px;
+
+	&[data-position="center"] {
+		margin-left: auto;
+		margin-right: auto;
 	}
-	&[data-size~="_30"] {
-		width: 30px;
-		font-size: 30px;
+
+	&[data-position="right"] {
+		margin-left: auto;
+		margin-right: 0;
 	}
-	&[data-size~="_25"] {
-		width: 25px;
-		font-size: 25px;
+
+	$holderSizes: 1400, 1366, 1200, 1080, 980, 880, 780, 580, 480;
+	@each $size in $holderSizes {
+		&[data-size="_#{$size}"] {
+			max-width: #{$size}px;
+		}
 	}
-	&[data-size~="_20"] {
-		width: 20px;
-		font-size: 20px;
+	@media all and (max-width: 720px) {
+		padding: 20px;
+
+		&[data-y-padding~="no"] {
+			padding: 0;
+		}
 	}
-	&[data-size~="_15"] {
-		width: 15px;
-		font-size: 15px;
+}
+.back {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	// background: color(blanco);
+	background-size: cover;
+	background-repeat: no-repeat;
+	&[data-position~="fixed"] {
+		position: fixed;
+	}
+	img,
+	video {
+		width: 100%;
+		height: 100%;
+		display: block;
+		object-fit: cover;
+		object-position: 50% 50%;
 	}
 }

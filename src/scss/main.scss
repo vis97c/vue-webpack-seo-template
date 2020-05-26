@@ -7,7 +7,7 @@
 	module concatenation
 */
 
-@import "utils/module";
+@import "01-utils/module";
 
 :root {
 	@each $name, $font in $fonts {
@@ -19,13 +19,11 @@
 	}
 }
 
-// @import 'fonts/module';//this project use google fonts
-@import "base/module";
-// @import "components/module";
-// @import "layouts/module";
-
-// @import 'components/module';
-// @import 'pseudo/module';
+// @import '02-fonts/module';//this project use google fonts
+@import "03-base/module";
+// @import "04-components/module";
+// @import "05-layouts/module";
+// @import '06-pseudo/module';
 // html{
 // 	scroll-snap-type: proximity;
 // 	scroll-snap-points-y: repeat(100vh);
@@ -46,3 +44,4 @@ body {
 	// 	border-width:0;
 	// }
 }
+// @import '07-queries/module';

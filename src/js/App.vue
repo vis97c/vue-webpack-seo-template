@@ -55,7 +55,7 @@
 </script>
 
 <style lang="scss" scoped>
-	@import "_scss/utils/module.scss";
+	@import "_scss/01-utils/module.scss";
 	#appex {
 		position: relative;
 		margin: 0;
