@@ -41,12 +41,6 @@ var config = {
 		},
 		extensions: [".js", ".vue"],
 	},
-	output: {
-		path: __dirname + "/public_html",
-		filename: "js/[name].[chunkhash:8].js",
-		chunkFilename: "js/chunks/[name].[chunkhash:8].js",
-		publicPath: "/",
-	},
 	plugins: [new VueLoaderPlugin()],
 	module: {
 		rules: [
@@ -214,6 +208,12 @@ if (isProduction) {
 		])
 	);
 	module.exports = Object.assign({}, config, {
+		output: {
+			path: __dirname + "/public_html",
+			filename: "js/[name].[chunkhash:8].js",
+			chunkFilename: "js/chunks/[name].[chunkhash:8].js",
+			publicPath: "/",
+		},
 		stats: "minimal",
 		optimization: {
 			runtimeChunk: {
@@ -348,6 +348,12 @@ if (isProduction) {
 		})
 	);
 	module.exports = Object.assign({}, config, {
+		output: {
+			path: __dirname + "/public_html",
+			filename: "js/[name].js",
+			chunkFilename: "js/chunks/[name].js",
+			publicPath: "/",
+		},
 		devServer: {
 			port: 3000,
 			// hot: false,
