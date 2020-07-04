@@ -165,7 +165,6 @@ if (isProduction) {
 		OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 	// PurgecssPlugin = require("purgecss-webpack-plugin"),
 	// glob = require("glob");
-	config.output.pathinfo = false;
 	config.plugins.push(
 		new MiniCssExtractPlugin({
 			filename: "css/[name].[chunkhash:8].css",
@@ -213,6 +212,7 @@ if (isProduction) {
 			filename: "js/[name].[chunkhash:8].js",
 			chunkFilename: "js/chunks/[name].[chunkhash:8].js",
 			publicPath: "/",
+			pathinfo: false,
 		},
 		stats: "minimal",
 		optimization: {
